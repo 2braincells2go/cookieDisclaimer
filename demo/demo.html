@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>jQuery Cookie Disclaimer Bar</title>
+        
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/monokai.min.css">
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+        
+        <link rel="stylesheet" href="../dist/css/cookieDisclaimer.css">
+        <link rel="stylesheet" href="demo.css">        
+        
+	</head>
+	<body>
+        <h1>
+            jQuery Cookie Disclaimer Bar<br>
+            <small>DemoPage</small>
+        </h1>
+        <p>
+            This is a simple demo page of <strong>cookieDisclaimer</strong>
+        </p>
+        
+  
+<p>  
+<code><pre>
+
+$(function() {
+    $('body').cookieDisclaimer({
+        style: "light",
+        privacyPage: "demo-policy-example.html",
+        cookieBarText: "Try this demo cookie disclaimer bar"
+    });
+});
+
+</pre></code>      
+</p>  
+        
+        <h2>Killer Button Demo</h2>
+        <p>
+            <span class="cdbar-cookie-kill button killer">Kill Cookie Button</span>
+<code><pre>
+&lt;!-- Cookie Killer Button Use Example --&gt;
+&lt;span class="cdbar-cookie-kill"&gt;Kill Cookie Button&lt;/span&gt;
+</pre></code>
+        </p>
+    
+
+        
+        
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+		<script src="../dist/jquery-cookie/jquery.cookie.js"></script>
+        <script src="../dist/jquery.cookieDisclaimer.js"></script>
+        
+		<script>
+			$(function() {
+				$('body').cookieDisclaimer({
+                    style: "light", 
+                    privacyPage: "demo-policy-example.html",
+                    cookieBarText: "Try this demo cookie disclaimer bar"
+				});
+			});
+            
+		</script>
+	</body>
+</html>
+
