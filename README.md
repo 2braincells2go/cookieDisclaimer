@@ -1,8 +1,11 @@
-# cookieDisclaimer (version 0.9.0)
+# cookieDisclaimer (version 0.10.1)
 a jquery cookie disclaimer bar according the EU Law
 
 ### Beta Version
-This plugin is now at beta version. I'm testing it on all browsers.
+This plugin is now at beta version.<br>
+Before version 1.0 API can change frequently.
+
+Tested at now only on Chrome - Mozilla - Opera (Windows)
 
 ## Installation
 
@@ -34,6 +37,30 @@ $(document).on('ready', function() {
 });
 ```
 
+### All Options
+The follow options are at default value
+```javascript
+$(document).on('ready', function() {
+    $('body').cookieDisclaimer({
+        layout: "bar", //can be: bar,modal
+        position: "top", //can be: top,middle,bottom
+        style: "dark", //can be: dark,light
+        cssPosition: "fixed", //can be: fixed,absolute,relative
+        cookieName: "cookieDisclaimer", 
+        cookieValue: "confirmed", 
+        cookiePath: "/", 
+        cookieExpire: 7, // time in days
+        cookieDisclaimerTitle: 'Cookie Disclaimer',
+        cookieDisclaimerText: "To browse this site you need to accept our cookie policy.",
+        cookieBtnClass: "cdbtn cookie",
+        cookieBtnTxt: "Accept",
+        privacyPage: false, //can be: false or an url as "privacy.html"
+        privacyBtnClass: "cdbtn privacy",
+        privacyBtnTxt: "Policy"
+    });
+});
+```
+
 ## Structure
 
 The basic structure of the project is given in the following way:
@@ -62,4 +89,15 @@ The basic structure of the project is given in the following way:
 └── README.md
 ```
 
+## Changes
+
+**Version 0.10.1**<br>
+New *.cssPosition* option added
+Some CSS changes
+
+**Version 0.10.0**<br>
+New Public Method *.cookieList()* added
+
+**Version 0.9.1**<br>
+Some changes on demo pages and CSS
 

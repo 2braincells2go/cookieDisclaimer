@@ -3,12 +3,13 @@
 	<head>
 		<title>jQuery Cookie Disclaimer Bar</title>
         
-		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/monokai.min.css">
         <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
         <script>hljs.initHighlightingOnLoad();</script>
         
+        <!-- Plugin CSS -->
         <link rel="stylesheet" href="../dist/css/cookieDisclaimer.css">
+        <!-- DemoPage CSS -->
         <link rel="stylesheet" href="demo.css">        
         
 	</head>
@@ -38,14 +39,24 @@ $(function() {
         
         <h2>Killer Button Demo</h2>
         <p>
-            <span class="cdbar-cookie-kill button killer">Kill Cookie Button</span>
+            <a href="#" class="cdbar-cookie-kill button killer">Kill Cookie Button</a>
 <code><pre>
 &lt;!-- Cookie Killer Button Use Example --&gt;
-&lt;span class="cdbar-cookie-kill"&gt;Kill Cookie Button&lt;/span&gt;
+&lt;a href="#" class="cdbar-cookie-kill"&gt;Kill Cookie Button&lt;/a&gt;
 </pre></code>
         </p>
-    
-
+        
+        <h2>Cookies List Example</h2>
+        <p>This is an example of method: <strong>cookiesList()</strong>
+<code><pre>
+//cookiesList() Use Example 
+var cd = $('body').data('plugin_cookieDisclaimer');
+    cd.cookiesList('html','#cookieList');
+</pre></code>
+        </p>    
+        <div id="cookieList">
+            
+        </div>
         
         
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
@@ -59,6 +70,8 @@ $(function() {
                     privacyPage: "demo-policy-example.html",
                     cookieBarText: "Try this demo cookie disclaimer bar"
 				});
+                var cd = $('body').data('plugin_cookieDisclaimer');
+                cd.cookiesList('html','#cookieList');
 			});
             
 		</script>

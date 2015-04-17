@@ -24,9 +24,6 @@
 @privacyBtnBg: #6e7071;
 @privacyBtnBgHover: #8f9191;
 
-@modalWidth: 50%;
-@modalMaxWidth: 700px;
-
 
 
 // PLUGIN STYLE
@@ -34,7 +31,8 @@
 
 /* CookieDisclaimerBar */
 .cdbar {
-
+    
+    position: fixed;
     right: 0;
     left: 0;
     padding: @barPadding;
@@ -53,22 +51,44 @@
         display: inline-block;
         -webkit-transition: background 0.2s ease;
                 transition: background 0.2s ease;
+        
+        /* Generic Btn */
+        .cdbtn {
+            display: inline-block;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            text-decoration: none;
+            cursor: pointer;
+            font-size: 1em;
+            margin-right: 5px;
+        }
+        
+        /* "Accept" Btn */
+        .cdbtn.cookie {
+            color: @acceptBtnColor;
+            background-color: @acceptBtnBg;
+        }
+        .cdbtn.cookie:hover {
+            background-color: @acceptBtnBgHover;
+        }
+        
+//        .cookiedecline{
+//            color: #fff;
+//            background-color: firebrick;
+//        }
+        
+        /* "Privacy" Btn */
+        .cdbtn.privacy {
+            color: @privacyBtnColor;
+            background-color: @privacyBtnBg;
+        }
+        .cdbtn.privacy:hover {
+            background-color: @privacyBtnBgHover;
+        }
     }
 
 }
-
-.cdbar.fixed {
-    position: fixed;
-}
-
-.cdbar.relative {
-    position: relative;
-}
-
-.cdbar.absolute {
-    position: absolute;
-}
-
 
 /* Bar Clearfix */
 .cdbar:before,
@@ -125,86 +145,40 @@
     background-color: @barBgColorLight;
 }
 
-/* MODALS */
-/* *************************************** */
+/*
+body.site-blocked {
+    opacity: 0.5;
+    pointer-events: none;
+}
 
-.cdmodal {
+.cdbar-policy-modal {
+    background-color: rgba(0,0,0,0.5);
     position: fixed;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
-    background: rgba(0,0,0,0.8);
-    z-index: 99999;
-    
-    .cdmodal-box {
-        position: absolute;
-        width: @modalWidth;
-        max-width: @modalMaxWidth;
-        left: 50%;
-        -webkit-transform: translateX(-50%);
-                transform: translateX(-50%);
-    }
-    
-    .cdmodal-box-inner {
-        background: #fff;
-        padding: 20px;
-    }
+    overflow: auto;
+    display: none;
 }
 
-.cdmodal.top {
-    .cdmodal-box {
-        top: 10%;
-        bottom: auto;
-    }
+.cdbar-policy-modal-inner {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    width: 70%;
+    max-width: 1000px;
+    margin: 10% auto 0 auto;
 }
 
-.cdmodal.bottom {
-    .cdmodal-box {
-        top: auto;
-        bottom: 10%;
-    }
+body.onmodal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
 }
 
-.cdmodal.middle {
-    .cdmodal-box {
-        top: 50%;
-        -webkit-transform: translate(-50%,-50%);
-                transform: translate(-50%,-50%);
-    }
-}
-
-
-/* BUTTONS */
-
-/* Generic Btn */
-.cdbtn {
-    display: inline-block;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-    text-decoration: none;
-    cursor: pointer;
-    font-size: 1em;
-    margin-right: 5px;
-}
-
-/* "Accept" Btn */
-.cdbtn.cookie {
-    color: @acceptBtnColor;
-    background-color: @acceptBtnBg;
-}
-.cdbtn.cookie:hover {
-    background-color: @acceptBtnBgHover;
-}
-
-/* "Privacy" Btn */
-.cdbtn.privacy {
-    color: @privacyBtnColor;
-    background-color: @privacyBtnBg;
-}
-.cdbtn.privacy:hover {
-    background-color: @privacyBtnBgHover;
-}
-
+*/
 
