@@ -1,14 +1,21 @@
-# jQueryCookieDisclaimer (version 0.10.1)
+# jQueryCookieDisclaimer (version 0.11.0)
 a jquery cookie disclaimer bar according the EU Law
 
 ### Alpha Version
 This plugin is now at alpha version.<br>
 Before version 1.0 API can change frequently.
 
-Tested at now only on Chrome - Mozilla - Opera (Windows)
+
+### WARNING
+From version **0.11.0** Plugin API are changed!<br>
+I hope this is the last time ... sorry!
 
 ## Installation
 
+### Bower Install
+```
+$ bower install jquery-cookie-disclaimer --save
+```
 ### CSS
 First, include CSS file:
 ```html
@@ -42,21 +49,35 @@ The follow options are at default value
 ```javascript
 $(document).on('ready', function() {
     $('body').cookieDisclaimer({
-        layout: "bar", //can be: bar,modal
-        position: "top", //can be: top,middle,bottom
-        style: "dark", //can be: dark,light
-        cssPosition: "fixed", //can be: fixed,absolute,relative
-        cookieName: "cookieDisclaimer", 
-        cookieValue: "confirmed", 
-        cookiePath: "/", 
-        cookieExpire: 7, // time in days
-        cookieDisclaimerTitle: 'Cookie Disclaimer',
-        cookieDisclaimerText: "To browse this site you need to accept our cookie policy.",
-        cookieBtnClass: "cdbtn cookie",
-        cookieBtnTxt: "Accept",
-        privacyPage: false, //can be: false or an url as "privacy.html"
-        privacyBtnClass: "cdbtn privacy",
-        privacyBtnTxt: "Policy"
+        layout: "bar", // bar,modal
+        position: "top", // top,middle,bottom
+        style: "dark", // dark,light
+        title: "Cookie Disclaimer", // this is the modal title (not used on layout "bar")
+        text: "To browse this site you need to accept our cookie policy.", // "bar" and "modal" text
+        cssPosition: "fixed", //fixed,absolute,relative
+
+        acceptBtn: {
+            text: "I Accept", // accept btn text
+            cssClass: "cdbtn cookie", // accept btn class
+            cssId: "cookieAcceptBtn", // univocal accept btn ID
+            onAfter: "" // callback after accept button click
+        },
+
+        policyBtn: {
+            active: true, // this option is for activate "cookie policy page button link"
+            text: "Read More", // policypage btn text
+            link: "#", // cookie policy page URL
+            linkTarget: "_blank", // policypage btn link target
+            cssClass: "cdbtn privacy", // policypage btn class
+            cssId: "policyPageBtn" // univocal policypage btn ID
+        },
+        
+        cookie: {
+            name: "cookieDisclaimer",
+            value: "confirmed",
+            path: "/",
+            expire: 365
+        }  
     });
 });
 ```

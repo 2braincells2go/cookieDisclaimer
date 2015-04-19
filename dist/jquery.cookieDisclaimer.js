@@ -1,5 +1,5 @@
 /*
- *  jQueryCookieDisclaimer - v0.10.1
+ *  jQueryCookieDisclaimer - v0.11.0
  *  "jQuery Cookie Disclaimer Bar"
  *  http://factory.brainleaf.eu/jqueryCookieDisclaimer
  *
@@ -18,29 +18,54 @@
 		var pluginName = "cookieDisclaimer",
             
             defaults = {
-				
+                
                 layout: "bar", // bar,modal
                 position: "top", // top,middle,bottom
                 style: "dark", // dark,light
+                title: "Cookie Disclaimer", // this is the modal title (not used on layout "bar")
+                text: "To browse this site you need to accept our cookie policy.", // "bar" and "modal" text
                 cssPosition: "fixed", //fixed,absolute,relative
-                cookieName: "cookieDisclaimer", 
-                cookieValue: "confirmed",
-                cookiePath: "/", 
-                cookieExpire: 7, // time in days
-                cookieDisclaimerTitle: 'Cookie Disclaimer',
-                cookieDisclaimerText: "To browse this site you need to accept our cookie policy.",
-                cookieBtnClass: "cdbtn cookie",
-                cookieBtnTxt: "Accept",
-                privacyPage: false,
-                privacyBtnClass: "cdbtn privacy",
-                privacyBtnTxt: "Policy"
+                
+                acceptBtn: {
+                    text: "I Accept", // accept btn text
+                    cssClass: "cdbtn cookie", // accept btn class
+                    cssId: "cookieAcceptBtn", // univocal accept btn ID
+                    onAfter: "" // callback after accept button click
+                },
+                
+                policyBtn: {
+                    active: true, // this option is for activate "cookie policy page button link"
+                    text: "Read More", // policypage btn text
+                    link: "#", // cookie policy page URL
+                    linkTarget: "_blank", // policypage btn link target
+                    cssClass: "cdbtn privacy", // policypage btn class
+                    cssId: "policyPageBtn" // univocal policypage btn ID
+                    /* ToDo
+                    -- This wait for the next releases! --
+                    onClick: "" //function on click
+                    */
+                },
+                /*
+                -- This wait for the next releases! --
+                discardBtn: {
+                    active: false,
+                    blockSite: false,
+                    onClick: ""
+                },
+                */
+                cookie: {
+                    name: "cookieDisclaimer",
+                    value: "confirmed",
+                    path: "/",
+                    expire: 365
+                }    
                 
             };
 
 		// constructor
 		function Plugin ( element, options ) {
 				this.element = element;
-				this.settings = $.extend( {}, defaults, options );
+				this.settings = $.extend( true, defaults, options );
 				this._defaults = defaults;
 				this._name = pluginName;
 				this.init();
@@ -64,11 +89,11 @@
                         
                         case "bar":  
                             
-                            var barMarkup = '<div id="cookieDisclaimerBar" class="cdbar '+this.settings.style+' '+this.settings.position+' '+this.settings.cssPosition+'">';
-                            barMarkup += '  <div class="cdbar-text">'+this.settings.cookieDisclaimerText+'</div>';
+                            var barMarkup = '<div id="jQueryCookieDisclaimerBar" class="cdbar '+this.settings.style+' '+this.settings.position+' '+this.settings.cssPosition+'">';
+                            barMarkup += '  <div class="cdbar-text">'+this.settings.text+'</div>';
                             barMarkup += '  <div class="cdbar-buttons">';
-                            if(this.settings.privacyPage != false) barMarkup += '      <a href="'+this.settings.privacyPage+'" class="'+this.settings.privacyBtnClass+'">'+this.settings.privacyBtnTxt+'</a>';   
-                            barMarkup += '      <button class="'+this.settings.cookieBtnClass+' cdbar-cookie-accept">'+this.settings.cookieBtnTxt+'</button>';
+                            if(this.settings.policyBtn.active != false) barMarkup += '      <a id="'+this.settings.policyBtn.cssId+'" href="'+this.settings.policyBtn.link+'" class="'+this.settings.policyBtn.cssClass+'" target="'+this.settings.policyBtn.linkTarget+'">'+this.settings.policyBtn.text+'</a>';   
+                            barMarkup += '      <button id="'+this.settings.acceptBtn.cssId+'" class="'+this.settings.acceptBtn.cssClass+' cdbar-cookie-accept">'+this.settings.acceptBtn.text+'</button>';
                             barMarkup += '  </div>';
                             barMarkup += '</div>';
                             
@@ -80,12 +105,12 @@
                                 barMarkup += '  <div class="cdmodal-box">';
                                 barMarkup += '      <div class="cdmodal-box-inner">';
                                 barMarkup += '          <div class="cdmodal-text">';
-                                barMarkup += '             <h3>'+this.settings.cookieDisclaimerTitle+'</h3>';
-                                barMarkup += '             <p>'+this.settings.cookieDisclaimerText+'</p>';
+                                barMarkup += '             <h3>'+this.settings.title+'</h3>';
+                                barMarkup += '             <p>'+this.settings.text+'</p>';
                                 barMarkup += '          </div>';
                                 barMarkup += '          <div class="cdmodal-buttons">';
-                                if(this.settings.privacyPage != false) barMarkup += '      <a href="'+this.settings.privacyPage+'" class="'+this.settings.privacyBtnClass+'">'+this.settings.privacyBtnTxt+'</a>';   
-                                barMarkup += '              <button class="'+this.settings.cookieBtnClass+' cdbar-cookie-accept">'+this.settings.cookieBtnTxt+'</button>';
+                                if(this.settings.policyBtn.active != false) barMarkup += '      <a href="'+this.settings.policyBtn.link+'" class="'+this.settings.policyBtn.cssClass+'">'+this.settings.policyBtn.text+'</a>';   
+                                barMarkup += '              <button class="'+this.settings.acceptBtn.cssClass+' cdbar-cookie-accept">'+this.settings.acceptBtn.text+'</button>';
                                 barMarkup += '          </div>';
                                 barMarkup += '      </div>';
                                 barMarkup += '  </div>';
@@ -110,7 +135,7 @@
                     if not the bar will be showed
                 ========================================================== */
                 cookieHunter: function () {
-                    if ($.cookie(this.settings.cookieName) != this.settings.cookieValue) {
+                    if ($.cookie(this.settings.cookie.name) != this.settings.cookie.value) {
                         this.makeBarMarkup();
                     }
                 },
@@ -123,8 +148,11 @@
                     var plugin = this;
                     $('.cdbar-cookie-accept').on('click',function(e){
                         e.preventDefault();
-                        $.cookie(plugin.settings.cookieName, plugin.settings.cookieValue, { expires: plugin.settings.cookieExpire, path: plugin.settings.cookiePath }); 
-                        $('#cookieDisclaimerBar').fadeOut();
+                        $.cookie(plugin.settings.cookie.name, plugin.settings.cookie.value, { expires: plugin.settings.cookie.expire, path: plugin.settings.cookie.path }); 
+                        $('#jQueryCookieDisclaimerBar').fadeOut();
+                        $('#jQueryCookieDisclaimerBar').promise().done(function(){
+                            plugin.settings.acceptBtn.onAfter();
+                        });
                     });
                 },
             
@@ -163,11 +191,11 @@
                 },
             
                 cookieKiller: function () {
-                    if($.cookie(this.settings.cookieName) != undefined) {
-                        $.removeCookie(this.settings.cookieName, { path: this.settings.cookiePath });
+                    if($.cookie(this.settings.cookie.name) != undefined) {
+                        $.removeCookie(this.settings.cookie.name, { path: this.settings.cookie.path });
                         this.cookieHunter();
                     }else{
-                        alert('Sorry, but there are no cookie named '+this.settings.cookieName);
+                        alert('Sorry, but there are no cookie named '+this.settings.cookie.name);
                     }
                 },
             
