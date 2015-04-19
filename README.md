@@ -74,7 +74,7 @@ $(document).on('ready', function() {
         
         cookie: {
             name: "cookieDisclaimer",
-            value: "confirmed",
+            val: "confirmed",
             path: "/",
             expire: 365
         }  

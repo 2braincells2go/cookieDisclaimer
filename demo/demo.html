@@ -15,7 +15,7 @@
 	</head>
 	<body>
         <h1>
-            jQuery Cookie Disclaimer Bar<br>
+            jQuery Cookie Disclaimer<br>
             <small>DemoPage</small>
         </h1>
         <p>
@@ -29,8 +29,12 @@
 $(function() {
     $('body').cookieDisclaimer({
         style: "light",
-        privacyPage: "demo-policy-example.html",
-        cookieBarText: "Try this demo cookie disclaimer bar"
+        text: "Try this demo cookie disclaimer bar",
+        policyBtn: {
+            active: true, 
+            text: "Cookie Policy",
+            link: "demo-policy-example.html"
+        } 
     });
 });
 
@@ -66,9 +70,13 @@ var cd = $('body').data('plugin_cookieDisclaimer');
 		<script>
 			$(function() {
 				$('body').cookieDisclaimer({
-                    style: "light", 
-                    privacyPage: "demo-policy-example.html",
-                    cookieBarText: "Try this demo cookie disclaimer bar"
+                    style: "light",
+                    text: "Try this demo cookie disclaimer bar",
+                    policyBtn: {
+                        active: true, 
+                        text: "Cookie Policy",
+                        link: "demo-policy-example.html"
+                    }                    
 				});
                 var cd = $('body').data('plugin_cookieDisclaimer');
                 cd.cookiesList('html','#cookieList');

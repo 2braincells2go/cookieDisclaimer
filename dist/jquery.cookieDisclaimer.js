@@ -1,5 +1,5 @@
 /*
- *  jQueryCookieDisclaimer - v0.11.0
+ *  jQueryCookieDisclaimer - v0.11.1
  *  "jQuery Cookie Disclaimer Bar"
  *  http://factory.brainleaf.eu/jqueryCookieDisclaimer
  *
@@ -55,7 +55,7 @@
                 */
                 cookie: {
                     name: "cookieDisclaimer",
-                    value: "confirmed",
+                    val: "confirmed",
                     path: "/",
                     expire: 365
                 }    
@@ -135,7 +135,7 @@
                     if not the bar will be showed
                 ========================================================== */
                 cookieHunter: function () {
-                    if ($.cookie(this.settings.cookie.name) != this.settings.cookie.value) {
+                    if ($.cookie(this.settings.cookie.name) != this.settings.cookie.val) {
                         this.makeBarMarkup();
                     }
                 },
@@ -148,7 +148,7 @@
                     var plugin = this;
                     $('.cdbar-cookie-accept').on('click',function(e){
                         e.preventDefault();
-                        $.cookie(plugin.settings.cookie.name, plugin.settings.cookie.value, { expires: plugin.settings.cookie.expire, path: plugin.settings.cookie.path }); 
+                        $.cookie(plugin.settings.cookie.name, plugin.settings.cookie.val, { expires: plugin.settings.cookie.expire, path: plugin.settings.cookie.path }); 
                         $('#jQueryCookieDisclaimerBar').fadeOut();
                         $('#jQueryCookieDisclaimerBar').promise().done(function(){
                             plugin.settings.acceptBtn.onAfter();
