@@ -1,5 +1,5 @@
 /*
- *  jQueryCookieDisclaimer - v0.11.1
+ *  jQueryCookieDisclaimer - v0.11.3
  *  "jQuery Cookie Disclaimer Bar"
  *  http://factory.brainleaf.eu/jqueryCookieDisclaimer
  *
@@ -89,7 +89,7 @@
                         
                         case "bar":  
                             
-                            var barMarkup = '<div id="jQueryCookieDisclaimerBar" class="cdbar '+this.settings.style+' '+this.settings.position+' '+this.settings.cssPosition+'">';
+                            var barMarkup = '<div id="jQueryCookieDisclaimer" class="cdbar '+this.settings.style+' '+this.settings.position+' '+this.settings.cssPosition+'">';
                             barMarkup += '  <div class="cdbar-text">'+this.settings.text+'</div>';
                             barMarkup += '  <div class="cdbar-buttons">';
                             if(this.settings.policyBtn.active != false) barMarkup += '      <a id="'+this.settings.policyBtn.cssId+'" href="'+this.settings.policyBtn.link+'" class="'+this.settings.policyBtn.cssClass+'" target="'+this.settings.policyBtn.linkTarget+'">'+this.settings.policyBtn.text+'</a>';   
@@ -101,7 +101,7 @@
                             
                         case "modal":
                             
-                            var barMarkup = '<div id="cookieDisclaimerModal" class="cdmodal '+this.settings.style+' '+this.settings.position+'">';
+                            var barMarkup = '<div id="jQueryCookieDisclaimer" class="cdmodal '+this.settings.style+' '+this.settings.position+'">';
                                 barMarkup += '  <div class="cdmodal-box">';
                                 barMarkup += '      <div class="cdmodal-box-inner">';
                                 barMarkup += '          <div class="cdmodal-text">';
@@ -149,8 +149,8 @@
                     $('.cdbar-cookie-accept').on('click',function(e){
                         e.preventDefault();
                         $.cookie(plugin.settings.cookie.name, plugin.settings.cookie.val, { expires: plugin.settings.cookie.expire, path: plugin.settings.cookie.path }); 
-                        $('#jQueryCookieDisclaimerBar').fadeOut();
-                        $('#jQueryCookieDisclaimerBar').promise().done(function(){
+                        $('#jQueryCookieDisclaimer').fadeOut();
+                        $('#jQueryCookieDisclaimer').promise().done(function(){
                             plugin.settings.acceptBtn.onAfter();
                         });
                     });

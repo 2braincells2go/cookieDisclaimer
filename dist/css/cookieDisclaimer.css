@@ -99,7 +99,11 @@
 }
 .cdmodal .cdmodal-box-inner {
   background: #fff;
-  padding: 20px;
+  padding: 40px 20px;
+}
+.cdmodal .cdmodal-box-inner .cdmodal-text h3 {
+  padding: 0;
+  margin: 0 0 0.5em 0;
 }
 .cdmodal.top .cdmodal-box {
   top: 10%;
