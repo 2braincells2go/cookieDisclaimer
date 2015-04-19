@@ -1,8 +1,8 @@
-# cookieDisclaimer (version 0.10.1)
+# jQueryCookieDisclaimer (version 0.10.1)
 a jquery cookie disclaimer bar according the EU Law
 
-### Beta Version
-This plugin is now at beta version.<br>
+### Alpha Version
+This plugin is now at alpha version.<br>
 Before version 1.0 API can change frequently.
 
 Tested at now only on Chrome - Mozilla - Opera (Windows)
