@@ -1,7 +1,7 @@
 {
   "name": "jQueryCookieDisclaimer",
   "description": "a jquery cookie disclaimer bar according the EU Law",
-  "version": "0.11.3",
+  "version": "0.12.0",
   "keywords": [
         "jquery",
         "plugin",

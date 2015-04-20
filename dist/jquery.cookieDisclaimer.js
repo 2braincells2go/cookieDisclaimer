@@ -1,5 +1,5 @@
 /*
- *  jQueryCookieDisclaimer - v0.11.3
+ *  jQueryCookieDisclaimer - v0.12.0
  *  "jQuery Cookie Disclaimer Bar"
  *  http://factory.brainleaf.eu/jqueryCookieDisclaimer
  *
@@ -39,11 +39,9 @@
                     link: "#", // cookie policy page URL
                     linkTarget: "_blank", // policypage btn link target
                     cssClass: "cdbtn privacy", // policypage btn class
-                    cssId: "policyPageBtn" // univocal policypage btn ID
-                    /* ToDo
-                    -- This wait for the next releases! --
+                    cssId: "policyPageBtn", // univocal policypage btn ID
                     onClick: "" //function on click
-                    */
+               
                 },
                 /*
                 -- This wait for the next releases! --
@@ -77,6 +75,7 @@
 				init: function () {
                     this.cookieHunter();
                     this.cookieKillerButton();
+                    if (this.settings.policyBtn.onClick != "") this.policyOnClick();
 				},
                 
                 /* ==========================================================
@@ -155,7 +154,23 @@
                         });
                     });
                 },
+                
+                /* ==========================================================
+                    POLICY PAGE BUTTON ON CLICK FUNCTION
+                    This function prevent default link and launch a function
+                ========================================================== */
+                policyOnClick: function () {
+                    var plugin = this;
+                    $('#'+plugin.settings.policyBtn.cssId).on('click', function (e) {
+                        e.preventDefault();
+                        plugin.settings.policyBtn.onClick();
+                    });
+                },
             
+                /* ==========================================================
+                    COOKIES LIST
+                    This function returns a cookies list
+                ========================================================== */
                 cookiesList: function (out,element) {
 
                     var cookiesList = document.cookie.split(';'),
@@ -190,6 +205,10 @@
 
                 },
             
+                /* ==========================================================
+                    COOKIE KILLER
+                    This function kill the active (if exists) plugin cookie
+                ========================================================== */
                 cookieKiller: function () {
                     if($.cookie(this.settings.cookie.name) != undefined) {
                         $.removeCookie(this.settings.cookie.name, { path: this.settings.cookie.path });
@@ -198,7 +217,10 @@
                         alert('Sorry, but there are no cookie named '+this.settings.cookie.name);
                     }
                 },
-            
+                
+                /* ==========================================================
+                    COOKIE KILLER BUTTON
+                ========================================================== */
                 cookieKillerButton: function () {
                     var plugin = this;
                     $('.cdbar-cookie-kill').on('click',function(e){

@@ -1,10 +1,9 @@
-# jQueryCookieDisclaimer (version 0.11.3)
+# jQueryCookieDisclaimer (version 0.11.4)
 a jquery cookie disclaimer bar according the EU Law
 
 ### Alpha Version
 This plugin is now at alpha version.<br>
 Before version 1.0 API can change frequently.
-
 
 ### WARNING
 From version **0.11.0** Plugin API are changed!<br>
@@ -111,6 +110,10 @@ The basic structure of the project is given in the following way:
 ```
 
 ## Changes
+
+**Version 0.12.0 alpha**<br>
+Added OnClick function on policy page button
+
 **Version 0.11.3 alpha**<br>
 Some CSS changes
 
