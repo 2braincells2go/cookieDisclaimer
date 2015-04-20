@@ -1,4 +1,4 @@
-# jQueryCookieDisclaimer (version 0.11.4)
+# jQueryCookieDisclaimer (version 0.12.0)
 a jquery cookie disclaimer bar according the EU Law
 
 ### Alpha Version
