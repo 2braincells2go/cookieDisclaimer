@@ -68,7 +68,8 @@ $(document).on('ready', function() {
             link: "#", // cookie policy page URL
             linkTarget: "_blank", // policypage btn link target
             cssClass: "cdbtn privacy", // policypage btn class
-            cssId: "policyPageBtn" // univocal policypage btn ID
+            cssId: "policyPageBtn", // univocal policypage btn ID
+            onClick: "" // policypage btn function on click
         },
         
         cookie: {
@@ -133,6 +134,9 @@ Some CSS changes
 **Version 0.10.0 alpha**<br>
 New Public Method *.cookieList()* added
 
-**Version 0.9.1**<br>
+**Version 0.9.1 alpha**<br>
 Some changes on demo pages and CSS
+
+**Version 0.9.0 alpha**<br>
+First commit
 
