@@ -1,5 +1,5 @@
 /*
- *  jQueryCookieDisclaimer - v0.12.0
+ *  jQueryCookieDisclaimer - v1.0.0
  *  "jQuery Cookie Disclaimer Bar"
  *  http://factory.brainleaf.eu/jqueryCookieDisclaimer
  *
@@ -41,16 +41,8 @@
                     cssClass: "cdbtn privacy", // policypage btn class
                     cssId: "policyPageBtn", // univocal policypage btn ID
                     onClick: "" //function on click
-               
                 },
-                /*
-                -- This wait for the next releases! --
-                discardBtn: {
-                    active: false,
-                    blockSite: false,
-                    onClick: ""
-                },
-                */
+
                 cookie: {
                     name: "cookieDisclaimer",
                     val: "confirmed",
@@ -234,9 +226,9 @@
 
 		$.fn[ pluginName ] = function ( options ) {
 				return this.each(function() {
-						if ( !$.data( this, "plugin_" + pluginName ) ) {
-								$.data( this, "plugin_" + pluginName, new Plugin( this, options ) );
-						}
+                    if ( !$.data( this, "plugin_" + pluginName ) ) {
+                            $.data( this, "plugin_" + pluginName, new Plugin( this, options ) );
+                    }
 				});
 		};
 

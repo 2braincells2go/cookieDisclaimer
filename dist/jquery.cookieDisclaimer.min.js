@@ -1,5 +1,5 @@
 /*
- *  jQueryCookieDisclaimer - v0.12.0
+ *  jQueryCookieDisclaimer - v1.0.0
  *  "jQuery Cookie Disclaimer Bar"
  *  http://factory.brainleaf.eu/jqueryCookieDisclaimer
  *
