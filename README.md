@@ -1,22 +1,13 @@
-# jQueryCookieDisclaimer (version 1.0.0)
+# jQueryCookieDisclaimer (version 0.12.0)
 a jquery cookie disclaimer bar according the EU Law
 
-## Overview
-This plugin load a disclaimer bar where you can show some custom text and buttons.<br>
-You can choose style, buttons classes and id, cookie expire time, cookie name and more.<br>
-This plugin provide also some useful methods and ready to use buttons for several uses.
+### Alpha Version
+This plugin is now at alpha version.<br>
+Before version 1.0 API can change frequently.
 
-### Why use it
-* because it's very easy to use
-* beacuse it's light
-* because it's based on jquery cookie plugin that is one of the best cookie plugin
-* beacuse it's perfect for jquery beginners
-
-[Home, Demo & Documentation](http://factory.brainleaf.eu/jqueryCookieDisclaimer) 
-
-
-***
-
+### WARNING
+From version **0.11.0** Plugin API are changed!<br>
+I hope this is the last time ... sorry!
 
 ## Installation
 
@@ -31,7 +22,7 @@ First, include CSS file:
 ```
 
 ### Javascript
-Then, include jquery and the two javascript plugins:
+The, include jquery and the two javascript plugins:
 ```html
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
 <script src="plugin/path/js/jquery-cookie/jquery.cookie.js"></script>
@@ -42,10 +33,6 @@ or you can use the "all in one" file (that is jquery.cookie.js + jquery.cookieDi
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
 <script src="plugin/path/js/jquery.cookieDisclaimer.pack.min.js"></script>
 ```
-
-
-***
-
 
 ## Plugin Usage
 
@@ -61,27 +48,27 @@ The follow options are at default value
 ```javascript
 $(document).on('ready', function() {
     $('body').cookieDisclaimer({
-        layout: "bar", 
-        position: "top", 
-        style: "dark",
-        title: "Cookie Disclaimer",
-        text: "To browse this site you need to accept our cookie policy.",
-        cssPosition: "fixed",
+        layout: "bar", // bar,modal
+        position: "top", // top,middle,bottom
+        style: "dark", // dark,light
+        title: "Cookie Disclaimer", // this is the modal title (not used on layout "bar")
+        text: "To browse this site you need to accept our cookie policy.", // "bar" and "modal" text
+        cssPosition: "fixed", //fixed,absolute,relative
 
         acceptBtn: {
-            text: "I Accept", 
-            cssClass: "cdbtn cookie",
-            cssId: "cookieAcceptBtn",
-            onAfter: "" 
+            text: "I Accept", // accept btn text
+            cssClass: "cdbtn cookie", // accept btn class
+            cssId: "cookieAcceptBtn", // univocal accept btn ID
+            onAfter: "" // callback after accept button click
         },
 
         policyBtn: {
-            active: true,
-            text: "Read More", 
-            link: "#", 
-            linkTarget: "_blank",
-            cssClass: "cdbtn privacy",
-            cssId: "policyPageBtn"
+            active: true, // this option is for activate "cookie policy page button link"
+            text: "Read More", // policypage btn text
+            link: "#", // cookie policy page URL
+            linkTarget: "_blank", // policypage btn link target
+            cssClass: "cdbtn privacy", // policypage btn class
+            cssId: "policyPageBtn" // univocal policypage btn ID
         },
         
         cookie: {
@@ -94,12 +81,7 @@ $(document).on('ready', function() {
 });
 ```
 
-
-***
-
-
-
-## Plugin dir structure
+## Structure
 
 The basic structure of the project is given in the following way:
 
@@ -126,12 +108,6 @@ The basic structure of the project is given in the following way:
 ├── LICENSE
 └── README.md
 ```
-
-
-
-***
-
-
 
 ## Changes
 
