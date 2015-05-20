@@ -1,4 +1,4 @@
-# jQueryCookieDisclaimer (version 1.0.0)
+# jQueryCookieDisclaimer (version 1.1.0)
 a jquery cookie disclaimer bar according the EU Law
 
 ## Overview
@@ -67,6 +67,7 @@ $(document).on('ready', function() {
         title: "Cookie Disclaimer",
         text: "To browse this site you need to accept our cookie policy.",
         cssPosition: "fixed",
+        onAccepted: "",
 
         acceptBtn: {
             text: "I Accept", 
@@ -135,28 +136,7 @@ The basic structure of the project is given in the following way:
 
 ## Changes
 
-**Version 0.12.0 alpha**<br>
-Added OnClick function on policy page button
+**Version 1.1.0**<br>
+New **onAccepted** option added
 
-**Version 0.11.3 alpha**<br>
-Some CSS changes
-
-**Version 0.11.2 alpha**<br>
-Bug fixing on "modal" layout
-
-**Version 0.11.1 alpha**<br>
-Some code changes
-
-**Version 0.11.0 alpha**<br>
-API changed
-
-**Version 0.10.1 alpha**<br>
-New *.cssPosition* option added
-Some CSS changes
-
-**Version 0.10.0 alpha**<br>
-New Public Method *.cookieList()* added
-
-**Version 0.9.1**<br>
-Some changes on demo pages and CSS
 

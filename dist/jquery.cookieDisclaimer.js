@@ -1,5 +1,5 @@
 /*
- *  jQueryCookieDisclaimer - v1.0.0
+ *  jQueryCookieDisclaimer - v1.1.0
  *  "jQuery Cookie Disclaimer Bar"
  *  http://factory.brainleaf.eu/jqueryCookieDisclaimer
  *
@@ -25,6 +25,7 @@
                 title: "Cookie Disclaimer", // this is the modal title (not used on layout "bar")
                 text: "To browse this site you need to accept our cookie policy.", // "bar" and "modal" text
                 cssPosition: "fixed", //fixed,absolute,relative
+                onAccepted: "",
                 
                 acceptBtn: {
                     text: "I Accept", // accept btn text
@@ -128,6 +129,8 @@
                 cookieHunter: function () {
                     if ($.cookie(this.settings.cookie.name) != this.settings.cookie.val) {
                         this.makeBarMarkup();
+                    }else{
+                        if (this.settings.onAccepted != "") this.settings.onAccepted();
                     }
                 },
             
